@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require("cors");
+var dotenv = require("dotenv").config()
 const MongoClient = require("mongodb").MongoClient;
 
 var indexRouter = require('./routes/index');
@@ -24,7 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 
-let connectionString = "mongodb+srv://admin:VKQ6VafZkHdg4034@calendarevents.0ph6i.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+let connectionString = "mongodb+srv://admin:" + process.env.API_KEY + "@calendarevents.0ph6i.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
 MongoClient.connect(connectionString, {
         useUnifiedTopology: true
