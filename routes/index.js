@@ -7,6 +7,10 @@ router.post('/readall', function(req, res) {
   .then(results => { 
     res.send(results);
   })
+  .catch((err) => {
+    console.log(err);
+    res.status(500).send("Server error!");
+  })
 });
 
 router.post('/readone', function(req, res) {
@@ -15,13 +19,21 @@ router.post('/readone', function(req, res) {
   .then(results => { 
     res.send(results);
   })
+  .catch((err) => {
+    console.log(err);
+    res.status(500).send("Server error!");
+  })
 });
 
-router.post('/write', function(req, res) {
+router.post('/write', function(req, res, err) {
   req.app.locals.db.collection("events").insertOne({"date": req.body.date, "note":req.body.note})
   .then(
     res.send(JSON.stringify("Update ok"))
   )
+  .catch((err) => {
+    console.log(err);
+    res.status(500).send("Server error!");
+  })
 });
 
 router.post('/delete', function(req, res) {
@@ -29,6 +41,10 @@ router.post('/delete', function(req, res) {
   .then(
     res.send(JSON.stringify("Update ok"))
   )
+  .catch((err) => {
+    console.log(err);
+    res.status(500).send("Server error!");
+  })
 });
 
 router.post('/holidays', function(req, res) {
@@ -39,8 +55,11 @@ router.post('/holidays', function(req, res) {
         }
   })
   .then(results => { 
-    console.log(results);
     res.send(results);
+  })
+  .catch((err) => {
+    console.log(err);
+    res.status(500).send("Server error!");
   })
 
 });
