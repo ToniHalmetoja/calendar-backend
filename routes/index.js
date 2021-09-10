@@ -58,8 +58,7 @@ router.post('/holidays', function(req, res) {
     res.send(results);
   })
   .catch((err) => {
-    console.log(err);
-    res.status(500).send("Server error!");
+    res.status(500).send("API error!");
   })
 
 });
