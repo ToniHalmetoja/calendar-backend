@@ -1,5 +1,5 @@
 # calendar-backend
 
-Backend for https://github.com/ToniHalmetoja/calendar
+Backend for https://github.com/ToniHalmetoja/community-calendar
 
 Instructions there.
